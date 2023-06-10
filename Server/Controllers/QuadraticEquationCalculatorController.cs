@@ -19,9 +19,23 @@ namespace QuadraticEquationCalculator.Server.Controllers
         }
 
         [HttpGet]
-        public ValueTuple<Complex, Complex> Get(double a, double b, double c)
+        public QuadraticRoots Get(double a, double b, double c)
         {
-            var result = _calculatorService.CalculateQuadraticRoots(a, b, c);
+            var roots = _calculatorService.CalculateQuadraticRoots(a, b, c);
+
+            var result = new QuadraticRoots()
+            {
+                Root1 = new QuadraticRoot()
+                {
+                    Real = roots.Item1.Real,
+                    Imaginary = roots.Item1.Imaginary
+                },
+                Root2 = new QuadraticRoot()
+                {
+                    Real = roots.Item2.Real,
+                    Imaginary = roots.Item2.Imaginary
+                }
+            };
 
             return result;
         }

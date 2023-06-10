@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using QuadraticEquationCalculator.Server.Controllers;
 using QuadraticEquationCalculator.Server.Services;
+using QuadraticEquationCalculator.Shared;
 using Xunit.Abstractions;
 
 namespace QuadraticEquationCalculator.Tests
@@ -37,6 +38,15 @@ namespace QuadraticEquationCalculator.Tests
             Assert.NotNull(controller);
         }
 
+        private QuadraticRoot AssertValidRoot(QuadraticRoot root)
+        {
+            Assert.NotNull(root);
+            Assert.False(Double.IsNaN(root.Real));
+            Assert.False(Double.IsNaN(root.Real));
+
+            return root;
+        }
+
         [Fact]
         public void Get_ValidInputs_ReturnsTwoValidRoots()
         {
@@ -46,8 +56,9 @@ namespace QuadraticEquationCalculator.Tests
 
             var result = controller.Get(1, 2, 3);
 
-            Assert.False(result.Item1.IsNaN());
-            Assert.False(result.Item2.IsNaN());
+            Assert.NotNull(result);
+            AssertValidRoot(result.Root1);
+            AssertValidRoot(result.Root2);
         }
     }
 }
