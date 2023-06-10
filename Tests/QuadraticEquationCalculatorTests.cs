@@ -1,6 +1,5 @@
 using MathNet.Numerics;
 using QuadraticEquationCalculator.Server.Services;
-using System.Numerics;
 using Xunit.Abstractions;
 
 namespace QuadraticEquationCalculator.Tests
