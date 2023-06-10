@@ -1,12 +1,15 @@
 ﻿using System.Numerics;
+using MathNet.Numerics;
 
 namespace QuadraticEquationCalculator.Server.Services
 {
     public class QuadraticEquationCalcuatorService : IQuadraditicEquationCalculatorService
     {
-        public Complex[] CalculateQuadraticRoots(double coefficient_a, double coefficient_b, double constant_c)
+        public ValueTuple<Complex, Complex> CalculateQuadraticRoots(double coefficient_a, double coefficient_b, double constant_c)
         {
-            return new Complex[] { 1, 2 };
+            var result = FindRoots.Quadratic(constant_c, coefficient_b, coefficient_a);
+
+            return result;
         }
     }
 }

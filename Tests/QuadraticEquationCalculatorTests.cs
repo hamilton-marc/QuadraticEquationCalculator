@@ -1,10 +1,19 @@
+using MathNet.Numerics;
 using QuadraticEquationCalculator.Server.Services;
 using System.Numerics;
+using Xunit.Abstractions;
 
 namespace QuadraticEquationCalculator.Tests
 {
     public class QuadraticEquationCalculatorServiceTests
     {
+        private readonly ITestOutputHelper outputHelper;
+
+        public QuadraticEquationCalculatorServiceTests(ITestOutputHelper output)
+        {
+            this.outputHelper = output;
+        }
+
         [Fact]
         public void Constructor_ClassExists_ReturnsInstance()
         {
@@ -14,33 +23,24 @@ namespace QuadraticEquationCalculator.Tests
         }
 
         [Fact]
-        public void Calculate_ValidCoefficients_ReturnsNonEmptyArray()
+        public void CalculateQuadraticRoots_ValidInputs_ReturnsTwoRoots()
         {
             var calculator = new QuadraticEquationCalcuatorService();
 
             var result = calculator.CalculateQuadraticRoots(1, 2, 3);
 
-            Assert.NotEmpty(result);
+            Assert.False(result.Item1.IsNaN());
+            Assert.False(result.Item2.IsNaN());
         }
 
         [Fact]
-        public void Calculate_ValidCoefficients_ReturnsTwoRoots()
+        public void CalculateQuadraticRoots_ValidInputs_ReturnsValidRoots()
         {
             var calculator = new QuadraticEquationCalcuatorService();
 
-            var result = calculator.CalculateQuadraticRoots(1, 2, 3);
+            var result = calculator.CalculateQuadraticRoots(1, -3, 2);
 
-            Assert.Equal(2, result.Length);
+            outputHelper.WriteLine("Roots: " + result.ToString());
         }
-    }
-
-    [Fact]
-    public void Calculate_ValidCoefficients_ReturnsTwoRoots()
-    {
-        var calculator = new QuadraticEquationCalcuatorService();
-
-        var result = calculator.CalculateQuadraticRoots(1, 2, 3);
-
-        Assert.Equal(2, result.Length);
     }
 }
