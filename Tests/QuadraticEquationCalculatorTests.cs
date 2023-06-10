@@ -22,5 +22,15 @@ namespace QuadraticEquationCalculator.Tests
 
             Assert.NotEmpty(result);
         }
+
+        [Fact]
+        public void Calculate_ValidCoefficients_ReturnsTwoRoots()
+        {
+            var calculator = new QuadraticEquationCalcuatorService();
+
+            var result = calculator.CalculateQuadraticRoots(1, 2, 3);
+
+            Assert.Equal(2, result.Length);
+        }
     }
 }
