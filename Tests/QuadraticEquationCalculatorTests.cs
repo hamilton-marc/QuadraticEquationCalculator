@@ -6,11 +6,11 @@ namespace QuadraticEquationCalculator.Tests
 {
     public class QuadraticEquationCalculatorServiceTests
     {
-        private readonly ITestOutputHelper outputHelper;
+        private readonly ITestOutputHelper _outputHelper;
 
         public QuadraticEquationCalculatorServiceTests(ITestOutputHelper output)
         {
-            this.outputHelper = output;
+            this._outputHelper = output;
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace QuadraticEquationCalculator.Tests
             Assert.False(result.Item1.IsNaN());
             Assert.False(result.Item2.IsNaN());
 
-            outputHelper.WriteLine("Roots: " + result.ToString());
+            _outputHelper.WriteLine("Roots: " + result.ToString());
         }
     }
 }
