@@ -4,7 +4,7 @@ namespace QuadraticEquationCalculator.Server.Services
 {
     public class QuadraticEquationCalcuatorService : IQuadraditicEquationCalculatorService
     {
-        public Complex[] CalculateQuadraticRoots(double coefficient_a, double coefficient_b, double coefficient_c)
+        public Complex[] CalculateQuadraticRoots(double coefficient_a, double coefficient_b, double constant_c)
         {
             return new Complex[] { 1, 2 };
         }
