@@ -19,6 +19,8 @@ namespace QuadraticEquationCalculator.Tests
         {
             var mockLogger = Mock.Of<ILogger<QuadraticEquationCalculatorController>>();
             var controller = new QuadraticEquationCalculatorController(mockLogger);
+
+            Assert.NotNull(controller);
         }
     }
 }
