@@ -8,43 +8,92 @@
 
 <p>This component demonstrates calculating the roots of a quadratic equation given the coefficients and constants as input.</p>
 
-@if (roots == null)
+<h2><em>ax<sup>2</sup> + bx + c = 0</em></h2>
+
+<div>
+    <p>
+        <label for="coefficient_a">a:</label>
+        <input id="coefficient_a" type="text" @bind="coefficient_a" />
+    </p>
+
+    <p>
+        <label for="coefficient_b">b:</label>
+        <input id="coefficient_b" type="text" @bind="coefficient_b" />
+    </p>
+
+    <p>
+        <label for="constant_c">c:</label>
+        <input id="constant_c" type="text" @bind="constant_c" />
+    </p>
+
+    <p>
+        <button class="btn btn-primary" @onclick="FetchData">Compute</button>
+    </p>
+</div>
+
+@if (isValidationError)
 {
-    <p><em>Loading...</em></p>
+    <div class="alert alert-warning fade-in" role="alert">
+        One or more of your entries is invalid.
+    </div>
+
+    isValidationError = false;
 }
-else
-{
-    <table class="table">
-        <thead>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Equation</th>
+            <th>Root 1</th>
+            <th>Root 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roots != null)
+        {
             <tr>
-                <th>Equation</th>
-                <th>Root 1</th>
-                <th>Root 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1x^2 + 2x + 3</td>
+                <td>@((MarkupString) FormatEquation())</td>
                 <td>x = @roots.Root1.Real.ToString("R")</td>
                 <td>x = @roots.Root2.Real.ToString("R")</td>
             </tr>
-        </tbody>
-    </table>
-}
+        }
+    </tbody>
+</table>
 
 @code {
+    private bool isValidationError = false;
+    private string? coefficient_a;
+    private string? coefficient_b;
+    private string? constant_c;
     private QuadraticRoots? roots;
 
-    private string constructQueryParameter(string baseUrl)
+    private string ConstructQueryParameter(string baseUrl, double a, double b, double c)
     {
-        string url = $"{baseUrl}?a=1&b=2&c=3";
+        string url = $"{baseUrl}?a={a}&b={b}&c={c}";
 
         return url;
     }
 
-    protected override async Task OnInitializedAsync()
+    private string FormatEquation()
     {
-        roots = await Http.GetFromJsonAsync<QuadraticRoots>(constructQueryParameter("QuadraticEquationCalculator"));
+        var formattedEquation = $"{coefficient_a}" + "x<sup>2</sup>" + $" + {coefficient_b}x + {constant_c} = 0";
+
+        return formattedEquation;
+    }
+
+    private async Task FetchData()
+    {
+        double a, b, c;
+
+        if (!Double.TryParse(coefficient_a, out a) ||
+            !Double.TryParse(coefficient_b, out b) ||
+            !Double.TryParse(constant_c, out c))
+        {
+            isValidationError = true;
+            return;
+        }
+
+        roots = await Http.GetFromJsonAsync<QuadraticRoots>(ConstructQueryParameter("QuadraticEquationCalculator", a, b, c));
     }
 
 }
