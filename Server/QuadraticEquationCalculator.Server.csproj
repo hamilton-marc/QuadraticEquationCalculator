@@ -3,11 +3,14 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>fa0e3224-6192-474e-be45-f3c4d269606a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
@@ -18,5 +21,6 @@
 
   <ItemGroup>
     <None Include="app.yaml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Dockerfile" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
