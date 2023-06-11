@@ -1,0 +1,24 @@
+﻿@inject NavigationManager NavigationManager
+
+<div class="alert alert-secondary mt-4">
+    <p>
+        <strong>@Title</strong>
+    </p>
+    <p>
+        Click the button below to start solving your quadratic equations
+        or use the navigation menu on the left.
+    </p>
+    <p>
+        <button class="btn btn-primary" @onclick='(() => NavigateTo("quadratic"))'>Go</button>
+    </p>
+</div>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    void NavigateTo(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}
