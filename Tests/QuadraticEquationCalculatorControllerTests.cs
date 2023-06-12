@@ -38,7 +38,7 @@ namespace QuadraticEquationCalculator.Tests
             Assert.NotNull(controller);
         }
 
-        private QuadraticRoot AssertValidRoot(QuadraticRoot root)
+        private QuadraticRoot AssertValidRoot(QuadraticRoot? root)
         {
             Assert.NotNull(root);
             Assert.False(Double.IsNaN(root.Real));

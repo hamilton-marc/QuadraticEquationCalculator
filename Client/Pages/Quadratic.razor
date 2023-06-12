@@ -53,8 +53,8 @@
         {
             <tr>
                 <td>@((MarkupString) FormatEquation())</td>
-                <td>x = @roots.Root1.Real.ToString("R")</td>
-                <td>x = @roots.Root2.Real.ToString("R")</td>
+                <td>x = @roots?.Root1?.Real.ToString("R")</td>
+                <td>x = @roots?.Root2?.Real.ToString("R")</td>
             </tr>
         }
     </tbody>

@@ -8,7 +8,7 @@
 
     public class QuadraticRoots
     {
-        public required QuadraticRoot Root1 { get; set; }
-        public required QuadraticRoot Root2 { get; set; }
+        public QuadraticRoot? Root1 { get; set; }
+        public QuadraticRoot? Root2 { get; set; }
     }
 }
