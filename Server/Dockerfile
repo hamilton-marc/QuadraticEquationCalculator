@@ -6,8 +6,8 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-RUN git clone https://github.com/hamilton-marc/QuadraticEquationCalculator.git /src
 WORKDIR /src
+RUN git clone https://github.com/hamilton-marc/QuadraticEquationCalculator.git .
 COPY ["Server/QuadraticEquationCalculator.Server.csproj", "Server/"]
 COPY ["Client/QuadraticEquationCalculator.Client.csproj", "Client/"]
 COPY ["Shared/QuadraticEquationCalculator.Shared.csproj", "Shared/"]
