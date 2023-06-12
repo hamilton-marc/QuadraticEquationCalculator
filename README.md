@@ -45,7 +45,7 @@ Navigate to `http://localhost:<port>` where `<port>` is the port number that the
 
 To see the Swagger documentation for the API, navigate to the following URL:
 
-`http://localhost:3000/swagger`
+`http://localhost:<port>/swagger`
 
 From the Swagger interface, you can optionally interact with the API.
 
@@ -53,7 +53,7 @@ From the Swagger interface, you can optionally interact with the API.
 
 The following will return 2 real and imaginary roots solving for the quadratic equation is <em>ax<sup>2</sup> + bx + c = 0</em> where a = 6, b = -3 and c = 2.
 
-`http://localhost:3000/api/QuadraticEquationCalculator?a=6&b=-3&c=2`
+`http://localhost:<port>/api/QuadraticRoots?a=6&b=-3&c=2`
 
 ## Executing the Unit Tests
 
@@ -61,7 +61,7 @@ The unit tests were developed using xUnit and can be executed with the following
 command.
 
 ```shell
-dotnet run test
+dotnet test
 ```
 ## Licensing
 
