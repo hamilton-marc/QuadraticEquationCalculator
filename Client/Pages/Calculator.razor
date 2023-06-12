@@ -1,4 +1,4 @@
-﻿@page "/quadratic"
+﻿@page "/calculator"
 @using QuadraticEquationCalculator.Shared
 @inject HttpClient Http
 
@@ -93,7 +93,7 @@
             return;
         }
 
-        roots = await Http.GetFromJsonAsync<QuadraticRoots>(ConstructQueryParameter("QuadraticEquationCalculator", a, b, c));
+        roots = await Http.GetFromJsonAsync<QuadraticRoots>(ConstructQueryParameter("api/QuadraticRoots", a, b, c));
     }
 
 }

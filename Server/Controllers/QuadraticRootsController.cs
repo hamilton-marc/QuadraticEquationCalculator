@@ -6,13 +6,13 @@ using System.Numerics;
 namespace QuadraticEquationCalculator.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class QuadraticEquationCalculatorController : ControllerBase
+    [Route("api/[controller]")]
+    public class QuadraticRootsController : ControllerBase
     {
-        private readonly ILogger<QuadraticEquationCalculatorController> _logger;
+        private readonly ILogger<QuadraticRootsController> _logger;
         private readonly IQuadraditicEquationCalculatorService _calculatorService;
 
-        public QuadraticEquationCalculatorController(ILogger<QuadraticEquationCalculatorController> logger, IQuadraditicEquationCalculatorService calculatorService)
+        public QuadraticRootsController(ILogger<QuadraticRootsController> logger, IQuadraditicEquationCalculatorService calculatorService)
         {
             _logger = logger;
             _calculatorService = calculatorService;

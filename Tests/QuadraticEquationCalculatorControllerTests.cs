@@ -30,10 +30,10 @@ namespace QuadraticEquationCalculator.Tests
         [Fact]
         public void Constructor_ClassExists_ReturnsInstance()
         {
-            var mockLogger = Mock.Of<ILogger<QuadraticEquationCalculatorController>>();
+            var mockLogger = Mock.Of<ILogger<QuadraticRootsController>>();
             var mockCalcService = CreateMockCalculatorService();
 
-            var controller = new QuadraticEquationCalculatorController(mockLogger, mockCalcService);
+            var controller = new QuadraticRootsController(mockLogger, mockCalcService);
 
             Assert.NotNull(controller);
         }
@@ -50,9 +50,9 @@ namespace QuadraticEquationCalculator.Tests
         [Fact]
         public void Get_ValidInputs_ReturnsTwoValidRoots()
         {
-            var mockLogger = Mock.Of<ILogger<QuadraticEquationCalculatorController>>();
+            var mockLogger = Mock.Of<ILogger<QuadraticRootsController>>();
             var mockCalcService = CreateMockCalculatorService();
-            var controller = new QuadraticEquationCalculatorController(mockLogger, mockCalcService);
+            var controller = new QuadraticRootsController(mockLogger, mockCalcService);
 
             var result = controller.Get(1, 2, 3);
 
