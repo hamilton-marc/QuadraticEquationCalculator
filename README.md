@@ -26,7 +26,7 @@ dotnet restore
 To build the solution for the target framework for all of the underlying projects, use the build command from the dotnet CLI:
 
 ```shell
-dotnet restore
+dotnet build
 ```
 
 ## Run the application locally
