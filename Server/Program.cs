@@ -25,7 +25,8 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Throws a warning on Google Cloud Platform App Engine :shrug:
+// app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
