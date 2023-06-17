@@ -7,10 +7,9 @@ EXPOSE 8080
 EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+COPY . /src
 WORKDIR /src
-RUN git clone https://github.com/hamilton-marc/QuadraticEquationCalculator.git .
 RUN dotnet restore "Server/QuadraticEquationCalculator.Server.csproj"
-COPY . .
 WORKDIR "/src/Server"
 RUN dotnet build "QuadraticEquationCalculator.Server.csproj" -c Release -f net7.0 -o /app/build
 
