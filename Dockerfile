@@ -10,6 +10,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 COPY . /src
 WORKDIR /src
 RUN dotnet restore "Server/QuadraticEquationCalculator.Server.csproj"
+RUN dotnet test -f net7.0
 WORKDIR "/src/Server"
 RUN dotnet build "QuadraticEquationCalculator.Server.csproj" -c Release -f net7.0 -o /app/build
 
